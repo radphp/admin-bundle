@@ -1,0 +1,27 @@
+{
+    "name": "radphp/admin-bundle",
+    "type": "radphp-bundle",
+    "license": "MIT",
+    "description": "Admin bundle to manage all other bundles in one control panel",
+    "keywords": ["RadPHP", "admin", "bundle"],
+    "authors": [
+        {
+            "name": "Mohammad Abdoli Rad",
+            "email": "m.abdolirad@gmail.com",
+            "role": "Project Founder"
+        },
+        {
+            "name": "Omid Mottaghi Rad",
+            "email": "omidmr@gmail.com",
+            "role": "Project Founder"
+        }
+    ],
+    "require": {
+        "radphp/radphp": "dev-master",
+    },
+    "autoload": {
+        "psr-4": {
+            "Admin\\": "."
+        }
+    }
+}
