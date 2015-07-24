@@ -17,11 +17,41 @@
         }
     ],
     "require": {
-        "radphp/radphp": "dev-master"
+        "radphp/radphp": "dev-master",
+
+        "fxp/composer-asset-plugin": "~1.0",
+        "bower-asset/angular": "1.2.16",
+        "bower-asset/json3": "~3.3.1",
+        "bower-asset/es5-shim": "~3.1.0",
+        "bower-asset/angular-resource": "1.2.16",
+        "bower-asset/angular-cookies": "1.2.16",
+        "bower-asset/angular-sanitize": "1.2.16",
+        "bower-asset/angular-animate": "1.2.16",
+        "bower-asset/angular-touch": "1.2.16",
+        "bower-asset/angular-route": "1.2.16",
+        "bower-asset/font-awesome": "4.3.0",
+        "bower-asset/angular-bootstrap": "0.12.0",
+        "bower-asset/oclazyload": "~0.5.2",
+        "bower-asset/angular-loading-bar": "~0.7.0",
+        "bower-asset/angular-ui-router": "~0.2.13",
+        "bower-asset/angular-toggle-switch": "~1.2.1",
+        "bower-asset/metisMenu": "~1.1.3",
+        "bower-asset/angular-chart.js": "~0.5.2"
+    },
+    "require-dev": {
+        "bower-asset/angular-mocks": "1.2.16",
+        "bower-asset/angular-scenario": "1.2.16"
     },
     "autoload": {
         "psr-4": {
             "Admin\\": "."
         }
+    },
+    "extra": {
+        "asset-installer-paths": {
+            "bower-asset-library": "Resource/asset/vendor",
+            "npm-asset-library": "Resource/asset/vendor"
+        }
     }
+
 }
