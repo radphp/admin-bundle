@@ -31,6 +31,7 @@
         "bower-asset/angular-route": "1.2.16",
         "bower-asset/font-awesome": "4.3.0",
         "bower-asset/angular-bootstrap": "0.12.0",
+        "bower-asset/oclazyload": "~0.5.2",
         "bower-asset/angular-loading-bar": "~0.7.0",
         "bower-asset/angular-ui-router": "~0.2.13",
         "bower-asset/angular-toggle-switch": "~1.2.1",
