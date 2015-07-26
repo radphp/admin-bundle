@@ -52,6 +52,8 @@
             "bower-asset-library": "Resource/asset/vendor",
             "npm-asset-library": "Resource/asset/vendor"
         }
+    },
+    "scripts": {
+        "pre-dependencies-solving": "composer global require \"fxp/composer-asset-plugin:~1.0\""
     }
-
 }
