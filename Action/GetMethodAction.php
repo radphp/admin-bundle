@@ -2,6 +2,7 @@
 
 namespace Admin\Action;
 
+use Admin\Library\MenuLibrary;
 use App\Action\AppAction;
 
 /**
@@ -13,13 +14,18 @@ class GetMethodAction extends AppAction
 {
     public function __invoke()
     {
+        $params = [];
         if (!func_num_args()) {
-            $template = SRC_DIR . '/Admin/Resource/template/index.html';
+            $template = 'index';
         } else {
+            $args = func_get_args();
+            if($args[count($args) - 1] == 'main') {
+                $params['menu'] = MenuLibrary::generate();
+            }
             $template = implode('/', func_get_args());
-            $template = SRC_DIR . "/Admin/Resource/template/$template.html";
         }
 
-        echo file_get_contents($template);
+        $this->getResponder()->setData('params', $params);
+        $this->getResponder()->setData('template', $template);
     }
 }
