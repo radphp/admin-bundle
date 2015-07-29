@@ -12,9 +12,11 @@ class GetMethodResponder extends AppResponder
 {
     public function __invoke()
     {
-        $params = ['params' => $this->getData('params', [])];
-        $template = '@Admin/' . $this->getData('template') . '.html';
+        if ($template = $this->getData('template', 'index')) {
+            $params = ['params' => $this->getData('params', [])];
+            $template = '@Admin/' . $template . '.html';
 
-        $this->setContent($template, $params);
+            $this->setContent($template, $params);
+        }
     }
 }
