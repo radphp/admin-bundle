@@ -4,9 +4,6 @@ namespace Admin\Action;
 
 use Admin\Library\MenuLibrary;
 use App\Action\AppAction;
-use Rad\Routing\Middleware\DispatcherMiddleware;
-use Rad\Routing\Middleware\RouterMiddleware;
-use Rad\Routing\MiddlewareCollection;
 
 /**
  * Index Action
@@ -22,6 +19,7 @@ class GetMethodAction extends AppAction
         $args = func_get_args();
 
         if ($args[0] == 'bundles') {
+            $this->getRouter()->setPrefix(['Admin', 'bundles']);
             array_shift($args);
             $args = implode('/', $args);
             $this->forward($args);
