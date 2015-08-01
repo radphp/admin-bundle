@@ -4,6 +4,7 @@ namespace Admin\Action;
 
 use Admin\Library\MenuLibrary;
 use App\Action\AppAction;
+use Twig\Library\Helper as TwigHelper;
 
 /**
  * Index Action
@@ -20,6 +21,8 @@ class GetMethodAction extends AppAction
 
         if ($args[0] == 'bundles') {
             $this->getRouter()->setPrefix(['Admin', 'bundles']);
+            TwigHelper::addMasterTwig('@Admin/master.twig');
+
             array_shift($args);
             $args = implode('/', $args);
             $this->forward($args);
