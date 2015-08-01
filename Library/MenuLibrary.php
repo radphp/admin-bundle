@@ -10,7 +10,7 @@ class MenuLibrary
     {
         $menu = [
             [
-                'href' => '/Admin/bundles/pages?inline=true',
+                'href' => '/Admin/bundles/pages',
                 'icon' => 'fa-file-text',
                 'label' => 'Pages',
             ],

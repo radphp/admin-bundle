@@ -1,24 +1,29 @@
-{% extends getMasterTwig() %}
-
-{% block content %}
-<!DOCTYPE html>
-<html lang="en-US">
+<!doctype html>
+<html class="no-js">
 <head>
-    {{ getCss() }}
-
+    <meta charset="utf-8">
     <base href="{% block base %}{% endblock %}">
 
     <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    {{ getCss() }}
+
 </head>
 
-{% block content %}{% endblock %}
+<body>
 
-<footer class="text-center">
-    <p>Proudly developed by <a href="https://github.com/radphp/radphp">RadPHP</a> framework.</p>
-</footer>
+<div ng-app="sbAdminApp">
+    {% if content %}
+        {{ content|raw }}
+    {% else %}
+        <div ui-view></div>
+    {% endif %}
+</div>
 
 {{ getJs() }}
 
 </body>
+
 </html>
-{% endblock %}

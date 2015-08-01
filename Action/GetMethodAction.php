@@ -15,7 +15,7 @@ class GetMethodAction extends AppAction
 {
     public function __invoke()
     {
-        $template = 'index';
+        $template = 'master';
         $params = [];
         $args = func_get_args();
 

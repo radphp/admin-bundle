@@ -13,8 +13,8 @@ class GetMethodResponder extends AppResponder
     public function __invoke()
     {
         if ($template = $this->getData('template', 'index')) {
-            $params = ['params' => $this->getData('params', [])];
-            $template = '@Admin/' . $template . '.html';
+            $params = $this->getData('params', []);
+            $template = '@Admin/' . $template . '.twig';
 
             $this->setContent($template, $params);
         }
