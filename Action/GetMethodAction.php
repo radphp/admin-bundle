@@ -15,46 +15,37 @@ class GetMethodAction extends AppAction
 {
     public function __invoke()
     {
-        TwigHelper::addCss('file:///Admin/vendor/bootstrap/dist/css/bootstrap.min.css', 50);
-        TwigHelper::addCss('file:///Admin/css/main.css', 51);
-        TwigHelper::addCss('file:///Admin/css/sb-admin-2.css', 52);
-        TwigHelper::addCss('file:///Admin/css/timeline.css', 53);
-        TwigHelper::addCss('file:///Admin/vendor/metisMenu/dist/metisMenu.min.css', 54);
-        TwigHelper::addCss('file:///Admin/vendor/angular-loading-bar/build/loading-bar.min.css', 55);
-        TwigHelper::addCss('file:///Admin/vendor/font-awesome/css/font-awesome.min.css', 56);
+        TwigHelper::addCss('file:///Admin/vendor/bootstrap/dist/css/bootstrap.min.css');
+        TwigHelper::addCss('file:///Admin/vendor/font-awesome/css/font-awesome.min.css');
+        TwigHelper::addCss('file:////code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
+        TwigHelper::addCss('file:///Admin/css/AdminLTE.min.css', 10);
+        TwigHelper::addCss('file:///Admin/css/skins/skin-blue.min.css', 20);
 
-        TwigHelper::addJs('file:///Admin/vendor/jquery/dist/jquery.min.js', 50);
-        TwigHelper::addJs('file:///Admin/vendor/angular/angular.min.js', 51);
-        TwigHelper::addJs('file:///Admin/vendor/bootstrap/dist/js/bootstrap.min.js', 52);
-        TwigHelper::addJs('file:///Admin/vendor/angular-ui-router/release/angular-ui-router.min.js', 53);
-        TwigHelper::addJs('file:///Admin/vendor/json3/lib/json3.min.js', 54);
-        TwigHelper::addJs('file:///Admin/vendor/oclazyload/dist/ocLazyLoad.min.js', 55);
-        TwigHelper::addJs('file:///Admin/vendor/angular-loading-bar/build/loading-bar.min.js', 56);
-        TwigHelper::addJs('file:///Admin/vendor/angular-bootstrap/ui-bootstrap-tpls.min.js', 57);
-        TwigHelper::addJs('file:///Admin/vendor/metisMenu/dist/metisMenu.min.js', 58);
-        TwigHelper::addJs('file:///Admin/vendor/Chart.js/Chart.min.js', 59);
-        TwigHelper::addJs('file:///Admin/js/app.js', 60);
-        TwigHelper::addJs('file:///Admin/js/sb-admin-2.js', 61);
+        TwigHelper::addJs('file:////oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js');
+        TwigHelper::addJs('file:////oss.maxcdn.com/respond/1.4.2/respond.min.js', 10);
+        TwigHelper::addJs('file:///Admin/vendor/jquery/dist/jquery.min.js', 20);
+        TwigHelper::addJs('file:///Admin/vendor/bootstrap/dist/js/bootstrap.min.js', 30);
+        TwigHelper::addJs('file:///Admin/js/app.min.js', 40);
 
-        TwigHelper::addMasterTwig('@App/master.twig');
-
-        $template = 'master';
-        $params = [];
+        $template = 'dashboard';
         $args = func_get_args();
 
+        TwigHelper::addMasterTwig('@Admin/master.twig');
+
+        /** @var \Twig_Environment $twig */
+        $twig = $this->getContainer()->get('twig');
+        $twig->addGlobal('menu', MenuLibrary::generate());
+
         if ($args[0] == 'bundles') {
-            $this->getRouter()->setPrefix(['Admin', 'bundles']);
-            TwigHelper::addMasterTwig('@Admin/master.twig');
+            $this->getRouter()->setPrefix(['admin', 'bundles']);
 
             array_shift($args);
             $args = implode('/', $args);
             $this->forward($args);
+
             $params['content'] = $this->getResponse()->getContent();
         } else {
             if ($args) {
-                if ($args[count($args) - 1] == 'main') {
-                    $params['menu'] = MenuLibrary::generate();
-                }
                 $template = implode('/', $args);
             }
         }
