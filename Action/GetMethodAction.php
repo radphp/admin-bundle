@@ -29,6 +29,7 @@ class GetMethodAction extends AppAction
 
         $template = 'dashboard';
         $args = func_get_args();
+        $params = [];
 
         TwigHelper::addMasterTwig('@Admin/master.twig');
 
