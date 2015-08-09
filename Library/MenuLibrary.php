@@ -18,7 +18,7 @@ class MenuLibrary
                         'label' => 'Pages',
                     ],
                     [
-                        'href' => '/admin/bundles/pages',
+                        'href' => '/admin/bundles/pages/new',
                         'label' => 'Add Page',
                     ]
                 ]

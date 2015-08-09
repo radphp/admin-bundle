@@ -2,25 +2,27 @@
 
 namespace Admin\Responder;
 use App\Responder\AppResponder;
+use Rad\Network\Http\Response;
 
 /**
  * Index Responder
  *
  * @package Admin\Responder
  */
-class GetMethodResponder extends AppResponder
+class IndexResponder extends AppResponder
 {
     public function __invoke()
     {
-        if ($this->getResponse()->getContent()) {
-            return;
+        if (($response = $this->getData('response', false)) instanceof Response) {
+            return $response;
         }
 
         if ($template = $this->getData('template', 'index')) {
-            $params = $this->getData('params', []);
             $template = '@Admin/' . $template . '.twig';
 
-            $this->setContent($template, $params);
+            return $this->render($template);
         }
+
+        return new Response();
     }
 }

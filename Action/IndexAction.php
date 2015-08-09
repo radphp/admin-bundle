@@ -11,7 +11,7 @@ use Twig\Library\Helper as TwigHelper;
  *
  * @package Admin\Action
  */
-class GetMethodAction extends AppAction
+class IndexAction extends AppAction
 {
     public function __invoke()
     {
@@ -29,29 +29,30 @@ class GetMethodAction extends AppAction
 
         $template = 'dashboard';
         $args = func_get_args();
-        $params = [];
-
+var_dump($args);die;
         TwigHelper::addMasterTwig('@Admin/master.twig');
 
         /** @var \Twig_Environment $twig */
         $twig = $this->getContainer()->get('twig');
         $twig->addGlobal('menu', MenuLibrary::generate());
 
+        // remove admin from args
+        array_shift($args);
+
         if ($args[0] == 'bundles') {
             $this->getRouter()->setPrefix(['admin', 'bundles']);
 
             array_shift($args);
             $args = implode('/', $args);
-            $this->forward($args);
+            $response = $this->forward($args, $this->getRequest()->getMethod());
 
-            $params['content'] = $this->getResponse()->getContent();
+            $this->getResponder()->setData('response', $response);
         } else {
             if ($args) {
                 $template = implode('/', $args);
             }
         }
 
-        $this->getResponder()->setData('params', $params);
         $this->getResponder()->setData('template', $template);
     }
 }
