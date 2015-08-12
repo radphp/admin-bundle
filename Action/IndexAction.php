@@ -29,15 +29,12 @@ class IndexAction extends AppAction
 
         $template = 'dashboard';
         $args = func_get_args();
-var_dump($args);die;
+
         TwigHelper::addMasterTwig('@Admin/master.twig');
 
         /** @var \Twig_Environment $twig */
         $twig = $this->getContainer()->get('twig');
         $twig->addGlobal('menu', MenuLibrary::generate());
-
-        // remove admin from args
-        array_shift($args);
 
         if ($args[0] == 'bundles') {
             $this->getRouter()->setPrefix(['admin', 'bundles']);
