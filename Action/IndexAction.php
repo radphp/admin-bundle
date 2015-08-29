@@ -2,7 +2,7 @@
 
 namespace Admin\Action;
 
-use Admin\Library\MenuLibrary;
+use Admin\Library\Menu;
 use App\Action\AppAction;
 use Twig\Library\Helper as TwigHelper;
 
@@ -34,13 +34,14 @@ class IndexAction extends AppAction
 
         /** @var \Twig_Environment $twig */
         $twig = $this->getContainer()->get('twig');
-        $twig->addGlobal('menu', MenuLibrary::generate());
+        $twig->addGlobal('menu', Menu::generate());
 
         if ($args[0] == 'bundles') {
             $this->getRouter()->setPrefix(['admin', 'bundles']);
 
             array_shift($args);
             $args = implode('/', $args);
+
             $response = $this->forward($args, $this->getRequest()->getMethod());
 
             $this->getResponder()->setData('response', $response);
