@@ -4,10 +4,18 @@
 namespace Admin\Library;
 
 
+use Rad\Events\EventManagerTrait;
+
 class MenuLibrary
 {
+    use EventManagerTrait;
+
+    const EVENT_GET_MENU = 'bundles.admin.getMenu';
+
     public static function generate()
     {
+        self::dispatchEvent(self::EVENT_GET_MENU);
+
         $menu = [
             [
                 'icon' => 'fa-file-text',
