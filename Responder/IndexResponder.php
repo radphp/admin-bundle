@@ -3,6 +3,7 @@
 namespace Admin\Responder;
 use App\Responder\AppResponder;
 use Rad\Network\Http\Response;
+use Twig\Library\TwigResponse;
 
 /**
  * Index Responder
@@ -20,7 +21,7 @@ class IndexResponder extends AppResponder
         if ($template = $this->getData('template', 'index')) {
             $template = '@Admin/' . $template . '.twig';
 
-            return $this->render($template);
+            return new TwigResponse($template);
         }
 
         return new Response();
