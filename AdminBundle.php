@@ -2,6 +2,7 @@
 
 namespace Admin;
 
+use Rad\Configure\Config;
 use Rad\Core\AbstractBundle;
 
 /**
@@ -11,5 +12,11 @@ use Rad\Core\AbstractBundle;
  */
 class AdminBundle extends AbstractBundle
 {
-
+    /**
+     * {@inheritdoc}
+     */
+    public function loadConfig()
+    {
+        Config::load(__DIR__ . DS . 'Resource' . DS . 'config' . DS . 'config.php');
+    }
 }

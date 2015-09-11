@@ -1,0 +1,36 @@
+{% extends '@Admin/layout/login.twig' %}
+{% form_theme form '@Admin/form/bootstrap_3_layout.html.twig' %}
+
+{% block content %}
+    {{ form_start(form) }}
+    <div class="form-group has-feedback{% if form.username.vars.valid==false %} has-error{% endif %}">
+        {{ form_widget(form.username, {'attr': {'placeholder': 'Username'}}) }}
+        {{ form_errors(form.username) }}
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+    </div>
+    <div class="form-group has-feedback{% if form.password.vars.valid==false %} has-error{% endif %}">
+        {{ form_widget(form.password, {'attr': {'placeholder': 'Password'}}) }}
+        {{ form_errors(form.password) }}
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+    </div>
+    <div class="row">
+        <div class="col-xs-8">
+            {#<div class="checkbox icheck">#}
+                {#<label>#}
+                    {#<div class="icheckbox_square-blue" style="position: relative;" aria-checked="false"#}
+                         {#aria-disabled="false">#}
+                        {#<input type="checkbox"#}
+                               {#style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;">#}
+                        {#<ins class="iCheck-helper"#}
+                             {#style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins>#}
+                    {#</div>#}
+                    {#Remember Me#}
+                {#</label>#}
+            {#</div>#}
+        </div>
+        <div class="col-xs-4">
+            {{ form_widget(form.login, {'attr': {'class': 'btn btn-primary btn-block btn-flat'}}) }}
+        </div>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
