@@ -13,6 +13,11 @@ use Twig\Library\Helper as TwigHelper;
  */
 class IndexAction extends AppAction
 {
+    public $needsAuthentication = true;
+
+    /**
+     * {@inheritdoc}
+     */
     public function __invoke()
     {
         TwigHelper::addCss('file:///Admin/vendor/bootstrap/dist/css/bootstrap.min.css');
