@@ -74,7 +74,7 @@
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="/users/logout" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>
@@ -114,9 +114,9 @@
         </section>
 
         <section class="content">
-            <div class="row">
-                {% block content %}{% endblock %}
-            </div>
+
+            {% block content %}{% endblock %}
+
         </section>
     </div>
 
