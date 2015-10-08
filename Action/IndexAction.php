@@ -13,8 +13,6 @@ use Twig\Library\Helper as TwigHelper;
  */
 class IndexAction extends AppAction
 {
-    public $needsAuthentication = true;
-
     /**
      * {@inheritdoc}
      */
@@ -57,5 +55,15 @@ class IndexAction extends AppAction
         }
 
         $this->getResponder()->setData('template', $template);
+    }
+
+    /**
+     * Needs authentication
+     *
+     * @return bool
+     */
+    public function needsAuthentication()
+    {
+        return true;
     }
 }
