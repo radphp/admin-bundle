@@ -4,6 +4,8 @@ namespace Admin\Action;
 
 use Admin\Library\Menu;
 use App\Action\AppAction;
+use Rad\Authentication\Auth;
+use Rad\Authorization\Rbac;
 use Twig\Library\Helper as TwigHelper;
 
 /**
@@ -13,6 +15,28 @@ use Twig\Library\Helper as TwigHelper;
  */
 class IndexAction extends AppAction
 {
+    /**
+     * Check user is authorized
+     *
+     * @return bool
+     * @throws \Rad\DependencyInjection\Exception\ServiceNotFoundException
+     */
+    public function isAuthorized()
+    {
+        /** @var Rbac $rbac */
+        $rbac = $this->getContainer()->get('rbac');
+
+        /** @var Auth $auth */
+        $auth = $this->getContainer()->get('auth');
+        foreach ($auth->getStorage()->read()['roles'] as $roleName) {
+            if (true === $rbac->isGranted($roleName, 'admin.panel.view')) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     /**
      * {@inheritdoc}
      */
