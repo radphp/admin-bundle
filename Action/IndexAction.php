@@ -2,10 +2,10 @@
 
 namespace Admin\Action;
 
-use Admin\Library\Menu;
 use App\Action\AppAction;
 use Rad\Authentication\Auth;
 use Rad\Authorization\Rbac;
+use Rad\Stuff\Admin\Menu;
 use Twig\Library\Helper as TwigHelper;
 
 /**
