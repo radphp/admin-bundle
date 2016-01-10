@@ -63,7 +63,7 @@ class IndexAction extends AppAction
         $twig = $this->getContainer()->get('twig');
         $twig->addGlobal('menu', Menu::generate());
 
-        if ($args[0] == 'bundles') {
+        if (!empty($args) && $args[0] == 'bundles') {
             $this->getRouter()->setPrefix(['admin', 'bundles']);
 
             array_shift($args);
